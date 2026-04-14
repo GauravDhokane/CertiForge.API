@@ -1,6 +1,8 @@
 
+using System.Runtime.Intrinsics.X86;
 using CertiForge.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 namespace CertiForge.API
 {
@@ -29,6 +31,21 @@ namespace CertiForge.API
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
+                //using scalarapiReference it is like bruno addition we can test api here 
+                app.MapScalarApiReference(options =>
+                {
+                    options.WithTitle("My app");
+                    options.WithTheme(ScalarTheme.Saturn);
+                    options.WithSidebar(false);
+                });
+                
+                //nswag swagger implementation addition we can test api here 
+
+                app.UseSwaggerUi(options => 
+                {
+                    options.DocumentPath = "openapi/v1.json";
+                });
             }
 
             app.UseHttpsRedirection();

@@ -16,4 +16,11 @@
     <ProjectReference Include="..\CertiForge.Domain\CertiForge.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Common\" />
+    <Folder Include="Services\Graph\" />
+    <Folder Include="Services\ManageUser\" />
+    <Folder Include="Services\Storage\" />
+  </ItemGroup>
+
 </Project>

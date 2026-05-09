@@ -10,7 +10,7 @@ namespace LSC.SmartCertify.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Read")]
-    [Authorize]
+    [Authorize]//we are adding this attribute to make sure that only authenticated users with the required scope can access the endpoints in this controller. This is a security measure to protect the API and ensure that only authorized users can perform actions related to choices.
     public class ChoicesController : ControllerBase
     {
         private readonly IChoiceService _service;

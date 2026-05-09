@@ -10,16 +10,23 @@
     <PackageReference Include="AutoMapper" Version="16.1.1" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
     <PackageReference Include="Microsoft.Identity.Web" Version="4.8.0" />
     <PackageReference Include="NSwag.AspNetCore" Version="14.2.0" />
     <PackageReference Include="Scalar.AspNetCore" Version="1.2.72" />
+    <PackageReference Include="Serilog" Version="4.3.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CertiForge.Application\CertiForge.Application.csproj" />
     <ProjectReference Include="..\CertiForge.Domain\CertiForge.Domain.csproj" />
     <ProjectReference Include="..\CertiForge.Infrastructure\CertiForge.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MissingImplementations\" />
+    <Folder Include="RequestPayloads\" />
   </ItemGroup>
 
 </Project>

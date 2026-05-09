@@ -17,3 +17,4 @@ D:\development\.net\CertiForge\CertiForge.Infrastructure\obj\Debug\net9.0\refint
 D:\development\.net\CertiForge\CertiForge.Infrastructure\obj\Debug\net9.0\CertiForge.Infrastructure.pdb
 D:\development\.net\CertiForge\CertiForge.Infrastructure\obj\Debug\net9.0\CertiForge.Infrastructure.genruntimeconfig.cache
 D:\development\.net\CertiForge\CertiForge.Infrastructure\obj\Debug\net9.0\ref\CertiForge.Infrastructure.dll
+D:\development\.net\CertiForge\CertiForge.Infrastructure\obj\Debug\net9.0\CertiForge.Infrastructure.sourcelink.json

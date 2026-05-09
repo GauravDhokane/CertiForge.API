@@ -13,3 +13,4 @@ D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForg
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\refint\CertiForge.Application.dll
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.pdb
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\ref\CertiForge.Application.dll
+D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.sourcelink.json

@@ -7,8 +7,10 @@ using CertiForge.Application.Services;
 using CertiForge.Infrastructure;
 using CertiForge.Infrastructure.Entities;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Identity.Web;
 using Scalar.AspNetCore;
 
 namespace CertiForge.API
@@ -33,6 +35,55 @@ namespace CertiForge.API
             builder.Services.AddEndpointsApiExplorer();
 
             builder.Services.AddOpenApi();
+
+
+            //here all configuration and additionof azure b2c is done and we are also adding some events
+            //to log the errors and to log the scope claim if it is present in the token for debugging purpose
+            //and we are using serilog for logging the information and errors in the console and in the file as well
+            
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+              .AddMicrosoftIdentityWebApi(options =>
+              {
+                  builder.Configuration.Bind("AzureAdB2C", options);
+
+                  options.Events = new JwtBearerEvents
+                  {
+
+                      OnTokenValidated = context =>
+                      {
+                          var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+
+                          // Access the scope claim (scp) directly
+                          var scopeClaim = context.Principal?.Claims.FirstOrDefault(c => c.Type == "scp")?.Value;
+
+                          if (scopeClaim != null)
+                          {
+                              logger.LogInformation("Scope found in token: {Scope}", scopeClaim);
+                          }
+                          else
+                          {
+                              logger.LogWarning("Scope claim not found in token.");
+                          }
+
+
+                          return Task.CompletedTask;
+                      },
+                      OnAuthenticationFailed = context =>
+                      {
+                          var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+                          logger.LogError("Authentication failed: {Message}", context.Exception.Message);
+                          return Task.CompletedTask;
+                      },
+                      OnChallenge = context =>
+                      {
+                          var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<Program>>();
+                          logger.LogError("Challenge error: {ErrorDescription}", context.ErrorDescription);
+                          return Task.CompletedTask;
+                      }
+                  };
+              }, options => { builder.Configuration.Bind("AzureAdB2C", options); });
+
 
             //builder.Services.AddAutoMapper(typeof(MappingProfile));
             // Fix for CS1503: Use the correct overload of AddAutoMapper

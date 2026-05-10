@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CertiForge.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d9f4ede72b327450bf98bb0953829d7f0a82965")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24995de1290962f03d1fc37294c41880e32ae510")]
 [assembly: System.Reflection.AssemblyProductAttribute("CertiForge.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CertiForge.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

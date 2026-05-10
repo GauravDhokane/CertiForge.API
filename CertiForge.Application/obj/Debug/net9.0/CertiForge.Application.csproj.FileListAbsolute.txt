@@ -8,9 +8,9 @@ D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForg
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.AssemblyInfoInputs.cache
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.AssemblyInfo.cs
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.csproj.CoreCompileInputs.cache
+D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.sourcelink.json
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiFor.1D5CAAE0.Up2Date
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.dll
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\refint\CertiForge.Application.dll
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.pdb
 D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\ref\CertiForge.Application.dll
-D:\development\.net\CertiForge\CertiForge.Application\obj\Debug\net9.0\CertiForge.Application.sourcelink.json

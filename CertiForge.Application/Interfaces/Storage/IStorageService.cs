@@ -8,6 +8,7 @@ namespace CertiForge.Application.Interfaces.Storage
 {
     public interface IStorageService
     {
-
+        Task<string> GenerateSasTokenAsync(string fileName);
+        Task<string> UploadAsync(byte[] fileData, string fileName, string containerName = "");
     }
 }

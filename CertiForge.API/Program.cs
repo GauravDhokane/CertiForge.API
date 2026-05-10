@@ -1,5 +1,3 @@
-
-using System.Runtime.Intrinsics.X86;
 using CertiForge.Application;
 using CertiForge.Application.DTOValidations;
 using CertiForge.Application.Interfaces.Courses;
@@ -9,9 +7,9 @@ using CertiForge.Infrastructure.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using Scalar.AspNetCore;
+using Serilog;
 
 namespace CertiForge.API
 {
@@ -19,6 +17,7 @@ namespace CertiForge.API
     {
         public static void Main(string[] args)
         {
+
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<CertiForgeContext>(options =>

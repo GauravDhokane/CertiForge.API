@@ -1,4 +1,5 @@
 ﻿using CertiForge.Application.DTOs;
+using CertiForge.Application.DTOValidations;
 using CertiForge.Application.Interfaces.Certification;
 using CertiForge.Application.Interfaces.Common;
 using Microsoft.AspNetCore.Mvc;

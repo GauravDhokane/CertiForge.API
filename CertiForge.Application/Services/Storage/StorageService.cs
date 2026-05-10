@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CertiForge.Application.Interfaces.Storage
-{
-    public interface IStorageService
-    {
 
+namespace CertiForge.Application.Services.Storage
+{
+    public class StorageService
+    {
     }
 }

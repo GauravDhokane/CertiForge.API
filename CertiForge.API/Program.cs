@@ -1,12 +1,28 @@
+using System.Net;
+using CertiForge.API.Middlewares;
 using CertiForge.Application;
 using CertiForge.Application.DTOValidations;
+using CertiForge.Application.Interfaces.Certification;
+using CertiForge.Application.Interfaces.Common;
 using CertiForge.Application.Interfaces.Courses;
+using CertiForge.Application.Interfaces.Graph;
+using CertiForge.Application.Interfaces.ManageUser;
+using CertiForge.Application.Interfaces.QuestionsChoice;
+using CertiForge.Application.Interfaces.Storage;
 using CertiForge.Application.Services;
+using CertiForge.Application.Services.Certification;
+using CertiForge.Application.Services.Common;
+using CertiForge.Application.Services.Graph;
+using CertiForge.Application.Services.ManageUser;
+using CertiForge.Application.Services.Storage;
 using CertiForge.Infrastructure;
+using CertiForge.Infrastructure.BackgroundServices;
 using CertiForge.Infrastructure.Entities;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using Scalar.AspNetCore;
 using Serilog;
@@ -41,11 +57,26 @@ namespace CertiForge.API
 
             builder.Services.AddOpenApi();
 
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<IQuestionService, QuestionService>();
+            builder.Services.AddScoped<IChoiceService, ChoiceService>();
+            builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+            builder.Services.AddScoped<IChoiceRepository, ChoiceRepository>();
+            builder.Services.AddScoped<IExamRepository, ExamRepository>();
+            builder.Services.AddScoped<IExamService, ExamService>();
+            builder.Services.AddScoped<IUserProfileService, UserProfileService>();
+            builder.Services.AddScoped<IUserProfileRepository, UserProfileRepository>();
+            builder.Services.AddScoped<IUserClaims, UserClaims>();
+            builder.Services.AddTransient<RequestBodyLoggingMiddleware>();
+            builder.Services.AddTransient<ResponseBodyLoggingMiddleware>();
 
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateCourseValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<UpdateCourseValidator>();
+            
             //here all configuration and additionof azure b2c is done and we are also adding some events
             //to log the errors and to log the scope claim if it is present in the token for debugging purpose
             //and we are using serilog for logging the information and errors in the console and in the file as well
-            
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               .AddMicrosoftIdentityWebApi(options =>
@@ -90,6 +121,18 @@ namespace CertiForge.API
               }, options => { builder.Configuration.Bind("AzureAdB2C", options); });
 
 
+            builder.Services.AddHttpClient();
+
+            builder.Services.AddSingleton<GraphAuthService>();
+            builder.Services.AddScoped<IGraphAuthService, GraphAuthService>();
+            builder.Services.AddScoped<IGraphService, GraphService>();
+
+            // Register the background service
+            builder.Services.AddHostedService<NotificationBackgroundService>();
+            builder.Services.AddHostedService<OnboardUserBackgroundService>();
+
+
+
             //builder.Services.AddAutoMapper(typeof(MappingProfile));
             // Fix for CS1503: Use the correct overload of AddAutoMapper
             builder.Services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>());
@@ -111,6 +154,30 @@ namespace CertiForge.API
             var app = builder.Build();
             // configure the http request pipeline
             app.UseCors("default");
+
+            // Configure the HTTP request pipeline.
+            app.UseCors("default");
+
+            app.UseExceptionHandler(errorApp =>
+            {
+                errorApp.Run(async context =>
+                {
+                    var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+                    var exception = exceptionHandlerPathFeature?.Error;
+
+                    Log.Error(exception, "Unhandled exception occurred. {ExceptionDetails}", exception?.ToString());
+                    Console.WriteLine(exception?.ToString());
+                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                    await context.Response.WriteAsync("An unexpected error occurred. Please try again later.");
+                });
+            });
+
+
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseMiddleware<RequestBodyLoggingMiddleware>();
+            app.UseMiddleware<ResponseBodyLoggingMiddleware>();
+
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {

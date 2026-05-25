@@ -20,16 +20,22 @@ namespace CertiForge.API
 
             var builder = WebApplication.CreateBuilder(args);
 
+            //builder.Services.AddApplicationInsightsTelemetry(); 
+
             builder.Services.AddDbContext<CertiForgeContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DbContext"),
                     providerOptions => providerOptions.EnableRetryOnFailure());//very helpfull if 1st time db connection
-            });
+            }); 
 
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(options =>
+            {
+                options.Filters.Add<Filters.ValidationFilter>(); ///addding our custom validation filter to the global filter collection so that it will be applied to all the controllers 
+                options.Filters.Add<Filters.GlobalExceptionFilter>();// all the controllers and actions in the application and we don't need to add it to each controller or action separately     
+            });
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddEndpointsApiExplorer();
 

@@ -36,7 +36,7 @@ namespace CertiForge.API
 
             var builder = WebApplication.CreateBuilder(args);
 
-            //builder.Services.AddApplicationInsightsTelemetry(); 
+            // builder.Services.AddApplicationInsightsTelemetry(); 
 
             builder.Services.AddDbContext<CertiForgeContext>(options =>
             {

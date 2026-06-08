@@ -43,7 +43,10 @@ namespace CertiForge.API.Controllers
         }
 
         [HttpPost]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         [Authorize]
         [AdminRole]
         public async Task<IActionResult> CreateQuestion([FromBody] CreateQuestionDto dto)
@@ -53,7 +56,10 @@ namespace CertiForge.API.Controllers
         }
 
         [HttpPut("{id}")]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         [Authorize]
         [AdminRole]
         public async Task<IActionResult> UpdateQuestion(int id, [FromBody] UpdateQuestionDto dto)
@@ -63,7 +69,10 @@ namespace CertiForge.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         [Authorize]
         [AdminRole]
         public async Task<IActionResult> DeleteQuestion(int id)
@@ -74,7 +83,10 @@ namespace CertiForge.API.Controllers
 
 
         [HttpPost("CreateQuestionChoices")]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         [Authorize]
         [AdminRole]
         public async Task<IActionResult> CreateQuestionChoices([FromBody] QuestionDto dto)
@@ -84,7 +96,10 @@ namespace CertiForge.API.Controllers
         }
 
         [HttpPut("UpdateQuestionAndChoices/{id}")]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         [Authorize]
         [AdminRole]
         public async Task<IActionResult> UpdateQuestionAndChoices(int id, [FromBody] QuestionDto dto)

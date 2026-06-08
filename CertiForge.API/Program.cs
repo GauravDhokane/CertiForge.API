@@ -81,7 +81,7 @@ namespace CertiForge.API
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               .AddMicrosoftIdentityWebApi(options =>
               {
-                  builder.Configuration.Bind("AzureAdB2C", options);
+                  builder.Configuration.Bind("AzureAd", options);
 
                   options.Events = new JwtBearerEvents
                   {

@@ -86,8 +86,10 @@ namespace CertiForge.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
-        
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         public async Task<IActionResult> CreateCourse([FromBody] CreateCourseDto createCourseDto)
         {
             var validationResult = await _validator.ValidateAsync(createCourseDto);
@@ -114,8 +116,10 @@ namespace CertiForge.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
-        
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         public async Task<IActionResult> UpdateCourse(int id, [FromBody] UpdateCourseDto updateCourseDto)
         {
             //var validationResult = await updateValidator.ValidateAsync(updateCourseDto);
@@ -140,8 +144,10 @@ namespace CertiForge.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
-        
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         public async Task<IActionResult> DeleteCourse(int id)
         {
             await _courseService.DeleteCourseAsync(id);
@@ -160,8 +166,10 @@ namespace CertiForge.API.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [RequiredScope(RequiredScopesConfigurationKey = "AzureAdB2C:Scopes:Write")]
-        
+        [RequiredScopeOrAppPermission(
+         RequiredScopesConfigurationKey = "AzureAD:Scopes:Write",
+         RequiredAppPermissionsConfigurationKey = "AzureAD:AppPermissions:Write"
+        )]
         public async Task<IActionResult> UpdateDescription([FromRoute] int id, [FromBody] CourseUpdateDescriptionDto model)
         {
             await _courseService.UpdateDescriptionAsync(id, model.Description);

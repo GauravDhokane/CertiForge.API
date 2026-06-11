@@ -5,11 +5,11 @@ VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.API", "CertiForge.API.csproj", "{4EAC1349-20F6-4339-9CFF-55F7FE9F7FAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Domain", "..\CertiForge.Domain\CertiForge.Domain.csproj", "{6D0AFBCF-FEB5-4BDF-B0EC-59BC83CDBC72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Domain", "CertiForge.Domain\CertiForge.Domain.csproj", "{6D0AFBCF-FEB5-4BDF-B0EC-59BC83CDBC72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Application", "..\CertiForge.Application\CertiForge.Application.csproj", "{A05B79C2-59C0-4B9D-BCB2-016EF538F5B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Application", "CertiForge.Application\CertiForge.Application.csproj", "{A05B79C2-59C0-4B9D-BCB2-016EF538F5B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Infrastructure", "..\CertiForge.Infrastructure\CertiForge.Infrastructure.csproj", "{80D3CF0A-0EEC-41BA-9FFF-710EBDC74860}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CertiForge.Infrastructure", "CertiForge.Infrastructure\CertiForge.Infrastructure.csproj", "{80D3CF0A-0EEC-41BA-9FFF-710EBDC74860}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

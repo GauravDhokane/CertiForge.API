@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CertiForge.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24995de1290962f03d1fc37294c41880e32ae510")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e52359648303530d90d15f1de2dd6812305ff7a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CertiForge.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CertiForge.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

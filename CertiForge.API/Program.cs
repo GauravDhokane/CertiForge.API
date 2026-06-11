@@ -118,7 +118,7 @@ namespace CertiForge.API
                           return Task.CompletedTask;
                       }
                   };
-              }, options => { builder.Configuration.Bind("AzureAdB2C", options); });
+              }, options => { builder.Configuration.Bind("AzureAd", options); });
 
 
             builder.Services.AddHttpClient();
